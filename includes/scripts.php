@@ -309,6 +309,9 @@ function give_load_admin_scripts( $hook ) {
 		'revoke_api_key'                 => __( 'Are you sure you wish to revoke this API key?', 'give' ),
 		'regenerate_api_key'             => __( 'Are you sure you wish to regenerate this API key?', 'give' ),
 		'resend_receipt'                 => __( 'Are you sure you wish to resend the donation receipt?', 'give' ),
+		'disconnect_user'                => __( 'Are you sure you want to disconnect User from this Donor?', 'give' ),
+		'reconnect_user'                 => __( 'Want to reconnect with user', 'give' ),
+		'reconnect_label'                => __( 'Reconnect Now', 'give' ),
 		'logo'                           => __( 'Logo', 'give' ),
 		'use_this_image'                 => __( 'Use this image', 'give' ),
 		'one_option'                     => __( 'Choose a form', 'give' ),
@@ -324,7 +327,7 @@ function give_load_admin_scripts( $hook ) {
 		'confirm_before_remove_row_text' => __( 'Do you want to delete this level?', 'give' ),
 		'matched_success_failure_page'   => __( 'You cannot set the success and failed pages to the same page', 'give' ),
 		'dismiss_notice_text'            => __( 'Dismiss this notice.', 'give' ),
-		'bulk_action' => array(
+		'bulk_action'                    => array(
 			'delete'         => array(
 				'zero_payment_selected' => __( 'You must choose at least one or more payments to delete.', 'give' ),
 				'delete_payment'        => __( 'Are you sure you want to permanently delete this donation?', 'give' ),
@@ -336,7 +339,7 @@ function give_load_admin_scripts( $hook ) {
 				'resend_receipts'         => __( 'Are you sure you want to resend the emails receipt to {payment_count} recipients?', 'give' ),
 			),
 		),
-		'metabox_fields' => array(
+		'metabox_fields'                 => array(
 			'media' => array(
 				'button_title' => esc_html__( 'Choose Attachment', 'give' ),
 			)
@@ -404,18 +407,18 @@ add_action( 'admin_head', 'give_admin_icon' );
 function give_admin_hide_notice_shortly_js() {
 	?>
     <script>
-		jQuery(document).ready(function ($) {
-			$('.give-license-notice').on('click', 'button.notice-dismiss', function (e) {
-				e.preventDefault();
+        jQuery(document).ready(function ($) {
+            $('.give-license-notice').on('click', 'button.notice-dismiss', function (e) {
+                e.preventDefault();
 
-				var parent             = $(this).parents('.give-license-notice'),
-				    dismiss_notice_url = parent.data('dismiss-notice-shortly');
+                var parent = $(this).parents('.give-license-notice'),
+                    dismiss_notice_url = parent.data('dismiss-notice-shortly');
 
-				if (dismiss_notice_url) {
-					window.location.assign(dismiss_notice_url);
-				}
-			});
-		});
+                if (dismiss_notice_url) {
+                    window.location.assign(dismiss_notice_url);
+                }
+            });
+        });
     </script>
 	<?php
 }
