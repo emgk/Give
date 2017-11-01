@@ -746,8 +746,15 @@ function give_get_form_minimum_price( $form_id = 0 ) {
 
 	$form = new Give_Donate_Form( $form_id );
 
-	return $form->__get( 'minimum_price' );
-
+	/**
+	 * Filter the minimum amount.
+	 *
+	 * @since 1.8.17
+	 *
+	 * @param double|string $minimum_price Donation minimum custom amount.
+	 * @param integer       $form_id       Donation Form ID.
+	 */
+	return apply_filters( 'give_form_minimum_price', $form->__get( 'minimum_price' ), $form_id );
 }
 
 /**
